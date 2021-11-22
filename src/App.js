@@ -11,6 +11,14 @@ import { useState } from 'react'
 // 1) use them just in functional components
 // 2) use them always at the top level of your component
 
+// maybe an improvement would be to store the books like this:
+// [
+// {
+// book: { title, id, etc.}
+// qty: 1
+// }
+// ]
+
 const App = () => {
   const [cart, setCart] = useState([])
 
@@ -33,6 +41,7 @@ const App = () => {
         <Routes>
           <Route path='/' element={<BookStore addToCart={addToCart} />} />
           <Route path='/cart' element={<Cart cart={cart} removeFromCart={removeFromCart} />} />
+          <Route path='*' element={<h1>404 - Not Found</h1>} />
         </Routes>
       </Container>
     </BrowserRouter>
