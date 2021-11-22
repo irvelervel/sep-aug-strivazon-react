@@ -16,6 +16,8 @@ const App = () => {
 
   const addToCart = (book) => setCart([...cart, book])
 
+  const removeFromCart = (indexToRemove) => setCart(cart.filter((b, i) => i !== indexToRemove))
+
   return (
     <BrowserRouter>
       <Container>
@@ -30,7 +32,7 @@ const App = () => {
         <hr />
         <Routes>
           <Route path='/' element={<BookStore addToCart={addToCart} />} />
-          <Route path='/cart' element={<Cart />} />
+          <Route path='/cart' element={<Cart cart={cart} removeFromCart={removeFromCart} />} />
         </Routes>
       </Container>
     </BrowserRouter>
